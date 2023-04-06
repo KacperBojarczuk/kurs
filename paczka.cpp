@@ -38,6 +38,7 @@ main()
 
         cout<<"Objetosc twojej paczki wynosi: "<<objetosc<<" cm3"<<endl;
         cout<<"Koszt wysylki wynosi: "<<cena_paczki<<" zl"<<endl;
+        cout<<"elo";
         
         
 
