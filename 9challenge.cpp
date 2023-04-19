@@ -4,8 +4,10 @@ using namespace std;
 
 int main() 
 {
-    vector<int>vec{};
+    vector<int>vec{4,5,3,7};
     char selection{};
+    int add{};
+    
 
 do{
     cout<<"___________________"<<endl;
@@ -18,33 +20,69 @@ do{
         case 'p':
         case 'P':
             if(vec.size()!=0)
-                {
-                    cout<<"[ ";
-                        for(auto i:vec)
-                            {
-                                cout<<i<<" ";
-                            }
-                    cout<<"]";
-                }else{
-                    cout<<"[] - list is empty"<<endl;
-                } 
+            {
+                cout<<"[ ";
+                    for(auto i:vec)
+                    {
+                        cout<<i<<" ";
+                    }
+                cout<<"]\n";
+            }else{
+                cout<<"[] - list is empty"<<endl;
+            } 
             break;
         case 'a':
         case 'A':
             cout<<"Enter an integer to add to the list: ";
-            // cin>>
+            cin>>add;
+            vec.push_back(add);
+            cout<<add<<" added"<<endl;
             break;
         case 'm':
         case 'M':
-            // cout<<"The mean is: "<< <<endl;
+            if(vec.size()!=0)
+            {
+                double suma;
+                double mean;
+                for(auto vecs:vec)
+                    suma+=vecs;
+                mean=suma/vec.size();
+                cout<<"The mean is: "<< mean <<endl;
+            }else{
+                cout<<"Unable to calculate the mean - no data"<<endl;
+            }
             break;
         case 's':
         case 'S':
-            // cout<<"The smallest number is: "<< <<endl;
+            if(vec.size() != 0)
+            {     
+                for(int i =1;i<vec.size();i++)
+                {
+                    if(vec[i] < vec[0])
+                    {
+                        vec[0] = vec[i];
+                    }
+                }
+                cout<<"The smallest number is: "<<vec[0]<<endl;
+            }else{
+                cout<<"Unable to determine the smallest number - list is empty"<<endl;
+            }
             break;
         case 'l':
         case 'L':
-            // cout<<"The biggest number is: "<< <<endl;
+            if(vec.size() != 0)
+            {     
+                for(int i =1;i<vec.size();i++)
+                {
+                    if(vec[i] > vec[0])
+                    {
+                        vec[0] = vec[i];
+                    }
+                }
+                cout<<"The largest number is: "<<vec[0]<<endl;
+            }else{
+                cout<<"Unable to determine the largest number - list is empty"<<endl;
+            }
             break;
         case 'q':
         case 'Q':
@@ -56,17 +94,6 @@ do{
     }
 
 }while(selection != 'q' && selection != 'Q');
-
-  
-
-
-
-
-
-
-
-
-
 
   return 0;
 }
@@ -80,3 +107,4 @@ do{
 //S s wyswietla najmniejsza liczbe listy "najmniejsza liczba jest 1" | "nie udalo sie podac najmniejszej liczby - lista jest pusta"
 //L l wyswietla najwieksza liczbe listy "najwieksza liczba jest 1" | "nie udalo sie podac najwiekszej liczby - lista jest pusta"
 //Q q "dowidzenia"
+
