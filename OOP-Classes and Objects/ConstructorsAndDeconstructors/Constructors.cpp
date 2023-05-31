@@ -1,5 +1,20 @@
 #include <iostream>
 #include <string>
+
+/*
+Konstruktory służą do inicjalizacji obiektów. 
+Kompilator zapewni domyślny konstruktor, który nie ma argumentów. 
+Ten domyślny konstruktor zostanie wywołany automatycznie, gdy trzeba będzie utworzyć nowy obiekt.
+
+Załóżmy jednak, że mamy klasę, która modeluje osobę za pomocą imienia, wieku itp. 
+Jeśli obiekt Person jest tworzony przy użyciu konstruktora domyślnego, 
+to początkowe wartości imienia, wieku itp. mogą nie być tym, czego chcemy i mogą być nawet danymi śmieciowymi.
+
+Dlatego zwykle dostarczamy własnych konstruktorów (zwykle dostarczamy również domyślny konstruktor bez argumentów), 
+dzięki czemu mamy pełną kontrolę nad inicjalizacją naszych obiektów. 
+W rzeczywistości, gdy udostępnimy własnego konstruktora, kompilator nie będzie już automatycznie generował konstruktora domyślnego.
+*/
+
 class Player{
 
 //Default Constructor / no-args constructor
