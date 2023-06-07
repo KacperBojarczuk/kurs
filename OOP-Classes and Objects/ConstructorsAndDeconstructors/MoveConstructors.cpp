@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 class Move
 {
@@ -12,9 +13,11 @@ public:
   //Constructor
   Move(int d);
   //Copy Constructor
-  Move(const Deep &source);
+  Move(const Move &source);
+
   //MOVE CONSTRUCTOR
   Move(Move &&source) noexcept;
+
   //Destructor
   ~Move();
 };
@@ -26,30 +29,40 @@ Move::Move(int d)
     std::cout<<"constructor for: "<<d<<std::endl;
 }
 
-//Copy ctor
-Movep::Move(const Move &source)
+//Copy constructor
+Move::Move(const Move &source)
     :Move{*source.data}
     {
         std::cout<<"Copy constructor - Deep copy for: "<<*data<<std::endl;
     }
 
-Deep::~Deep(){
+//MOVE CONSTRUCTOR
+Move::Move(Move &&source) noexcept
+    :data {source.data}
+    {
+        source.data = nullptr;
+        std::cout << "Move constructor - moving resource: "<<*data<<std::endl;
+    }
+
+Move::~Move()
+{
+    if(data!=nullptr)
+    {
+        std::cout<<"Destructor freeing data for: "<<*data<<std::endl;
+    }else{
+        std::cout<<"Destructor freeing data for nullptr"<<std::endl;
+    }
     delete data;
-    cout<<"destructor freeing data"<<endl;
 }
 
-void display_Deep(Deep s)
-{
-    std::cout<<s.get_data_value()<<std::endl;
-}
+
 
 int main()
 {
-    Deep obj1 {100};
-    display_shallow(obj1);
+    std::vector<Move>vec;
 
-    Deep obj2 {obj1};
-    obj2.set_data_value(1000);
+    vec.push_back(Move{10});
+
 
     return 0;
 }
